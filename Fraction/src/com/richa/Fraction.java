@@ -41,15 +41,14 @@ public class Fraction {
 
     public int calculateGCF(int n1, int n2) {
         // figures out smaller and greater value between denominator product and numerator product
-        int min = n1, max = n2;
+        int min = n1;
         if (n1 > n2) {
-            max = n1;
             min = n2;
         }
 
         // calculates GCF
         int gcf = min;
-        while (max % gcf != 0 || min % gcf != 0) {
+        while (n1 % gcf != 0 || n2 % gcf != 0) {
             gcf = gcf - 1;
         }
         return gcf;
