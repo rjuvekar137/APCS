@@ -4,13 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
-
-        final int SEQ_SIZE = 25;                    //defines maximum number of slots in sequence
-        int[] sequence = new int[SEQ_SIZE];         //array to store the sequence
-        int seqCounter = 0;                         //number of slots filled currently
+        LNDS lnds = new LNDS();
 
         while(true) {
 
@@ -27,27 +23,48 @@ public class Main {
             int userChoice = scanner.nextInt();
 
             if (userChoice == 1) {
+
                 System.out.print("Enter the number you want to add to the sequence: ");
                 int userNumInput = scanner.nextInt();
-                sequence[seqCounter] = userNumInput;
-                seqCounter++;
-                System.out.println("The number has been added to the sequence.");
-            } else if (userChoice == 2) {
-                System.out.print("The current sequence is ");
-                for (int i = 0; i < seqCounter; i++) {
-                    System.out.print(sequence[i] + " ");
+
+                if ( lnds.addNumber(userNumInput) ) {
+                    System.out.println("");
+                    System.out.println("The number has been added to the sequence.");
+                } else {
+                    System.out.println("");
+                    System.out.println("The number has could not be added to the sequence. Only 25 allowed.");
                 }
-                System.out.println(" ");
+
+            } else if (userChoice == 2) {
+
+                System.out.println("");
+                System.out.print("The current sequence is ");
+                System.out.print(lnds.getSequence());
+                System.out.println("");
+
             } else if (userChoice == 3) {
-                System.out.println("eee");
+
+                System.out.println("");
+                System.out.print("The longest non-decreasing sequence is ");
+                System.out.print(lnds.getLongestNonDecreasingSequence());
+                System.out.println("");
+
             } else if (userChoice == 4) {
-                seqCounter = 0;
+
+                lnds.clearSequence();
+                System.out.println("");
                 System.out.println("The sequence has been reset.");
+
             } else if (userChoice == 5) {
-                System.out.println("Program has been ended.");
+
+                System.out.println("");
+                System.out.println("Program is ending.");
                 break;
+
             } else {
+
                 System.out.println("Error: Please only input a number between 1 and 5.");
+
             }
         }
     }
