@@ -19,6 +19,7 @@ public class MagicSquare {
     }
 
     public void addNumber(int i, int j, int number) {
+
         magicSquare[i][j] = number;
     }
 
@@ -68,6 +69,47 @@ public class MagicSquare {
         // all conditions for a magic square are met
         return constant;
     }
+
+    // prints content of magic square
+    public void printMagicSquare() {
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(magicSquare[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+
+    // if user wants square filled, solves magic square
+    public void fillMagicSquare(int startNum) {
+
+        int i = 0, j = (dimension - 1)/2;
+        int current = startNum;
+        magicSquare[i][j] = current;
+        int counter = 1;
+        while (counter < dimension*dimension){
+            current++;
+            int i2 = i - 1;
+            if (i2 < 0) {
+                i2 = dimension - 1;
+            }
+            int j2 = j + 1;
+            if (j2 > dimension - 1) {
+                j2 = 0;
+            }
+            if (magicSquare[i2][j2] != 0) {
+                i2 = i + 1;
+                j2 = j;
+            }
+            magicSquare[i2][j2] = current;
+            i = i2;
+            j = j2;
+            counter++;
+        }
+
+    }
+
+
 
 }
 
