@@ -8,42 +8,17 @@ import java.util.regex.*;
 
 public class Main {
 
-    /*
-     * Complete the simpleArraySum function below.
-     */
-
-    static int simpleArraySum(int[] ar) {
-
-        int sum = 0;
-        for ( int i=0; i<ar.length; i++ ) {
-            sum += ar[i];
-        }
-        return sum;
-
-        //return Arrays.stream(ar).sum();
-    }
     private static final Scanner scanner = new Scanner(System.in);
 
+    public static void printInt (int a[]) {
+        a[0] = 3;
+    }
+
     public static void main(String[] args) throws IOException {
-        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int arCount = Integer.parseInt(scanner.nextLine().trim());
+        int b[] = {5};
+        printInt(b);
+        System.out.println(b[0]);
 
-        int[] ar = new int[arCount];
-
-        String[] arItems = scanner.nextLine().split(" ");
-
-        for (int arItr = 0; arItr < arCount; arItr++) {
-            int arItem = Integer.parseInt(arItems[arItr].trim());
-            ar[arItr] = arItem;
-        }
-
-        int result = simpleArraySum(ar);
-        System.out.println ( result );
-
-        //bufferedWriter.write(String.valueOf(result));
-        //bufferedWriter.newLine();
-
-        //bufferedWriter.close();
     }
 }

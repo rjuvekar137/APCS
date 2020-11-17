@@ -67,6 +67,6 @@ public class Employee {
 
         double totalSales = salesQ1 + salesQ2 + salesQ3 + salesQ4;
         return totalSales;
-        
+
     }
 }
