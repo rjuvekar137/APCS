@@ -149,15 +149,15 @@ public class Main {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ2() == minSalesAmount) {
+                    else if (employees[i].getSalesQ2() == minSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ3() == minSalesAmount) {
+                    else if (employees[i].getSalesQ3() == minSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ4() == minSalesAmount) {
+                    else if (employees[i].getSalesQ4() == minSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
                 }
@@ -206,15 +206,15 @@ public class Main {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ2() == maxSalesAmount) {
+                    else if (employees[i].getSalesQ2() == maxSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ3() == maxSalesAmount) {
+                    else if (employees[i].getSalesQ3() == maxSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
 
-                    if (employees[i].getSalesQ4() == maxSalesAmount) {
+                    else if (employees[i].getSalesQ4() == maxSalesAmount) {
                         System.out.println(employees[i].getName());
                     }
                 }
