@@ -6,8 +6,8 @@ package com.richa;
  **/
 public class Character {
 
-    int numChar;
-    int numWords;
+    int numChars = 0;
+    int numWords = 0;
     String[] words = new String [100];
     int wordCounter = 0;
     int[] wordCount = new int[100];
@@ -37,6 +37,11 @@ public class Character {
             }
         }
 
+        // if we reached the end of the string, then return
+        if (startCounter >= userInput.length()) {
+            return;
+        }
+
         // moves endCounter to end of the word
         for (int i = endCounter; i < userInput.length(); i++) {
             if (java.lang.Character.isAlphabetic(userInput.charAt(i)) ||
@@ -51,6 +56,10 @@ public class Character {
         // extract the word
         String word = userInput.substring(startCounter, endCounter);
         startCounter = endCounter;
+
+        //change first character to capital
+        word = word.substring(0,1).toUpperCase() + word.substring(1);
+        numWords++;
 
         // see if the word is already there
         boolean wordFound = false;
@@ -69,10 +78,26 @@ public class Character {
         }
     }
 
-    void parse (String userInput) throws Exception{
+    void countCharacters(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!java.lang.Character.isSpaceChar(userInput.charAt(i))) {
+                numChars++;
+            }
+        }
+    }
+
+    void parse(String userInput) throws Exception {
+        countCharacters(userInput);
         do {
             getWord(userInput);
         } while(endCounter < userInput.length());
+    }
 
+    void printData() {
+        System.out.println(numChars + " characters");
+        System.out.println(numWords + " words");
+        for (int i = 0; i < wordCounter; i++) {
+            System.out.format("%-10s %d %n", words[i], wordCount[i]);
+        }
     }
 }

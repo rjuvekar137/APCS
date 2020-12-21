@@ -16,6 +16,7 @@ class CharacterTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ch.printData();
     }
 
     @org.junit.jupiter.api.Test
@@ -26,5 +27,6 @@ class CharacterTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ch.printData();
     }
 }
