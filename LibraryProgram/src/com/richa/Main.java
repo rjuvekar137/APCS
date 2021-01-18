@@ -109,9 +109,15 @@ public class Main {
 
             } else if (userChoice == 5) {
 
+                library.printBorrowedBooks();
+
             } else if (userChoice == 6) {
 
+
+
             } else if (userChoice == 7) {
+
+                library.printNotBorrowedBooks();
 
             } else if (userChoice == 8) {
 

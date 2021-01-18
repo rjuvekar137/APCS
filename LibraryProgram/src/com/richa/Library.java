@@ -95,4 +95,35 @@ public class Library {
         return false;
 
     }
+
+    public void printBorrowedBooks() {
+        boolean found = false;
+
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.getBorrowerName() != null) {
+                 System.out.format("Title: %-30s By: %-30s Date: %s%n", book.getTitle(), book.getBorrowerName(), book.getDateBorrowed().toString());
+                 found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("There are no books that have been borrowed at this time.");
+        }
+
+    }
+
+    public void printNotBorrowedBooks() {
+        boolean found = false;
+
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.getBorrowerName() == null) {
+                System.out.format("Title: %-30s Author: %-30s%n", book.getTitle(), book.getAuthor());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("There are no books in the library at this time.");
+        }
+    }
 }
