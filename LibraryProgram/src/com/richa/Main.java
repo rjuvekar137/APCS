@@ -59,18 +59,39 @@ public class Main {
                     System.out.println("Enter the borrower's name: ");
                     String borrowerName = scanner.nextLine();
 
-                    System.out.println("Enter the numerical month in which the book was borrowed: ");
-                    int monthBorrowed = scanner.nextInt();
+                    int monthBorrowed=0, dayBorrowed=0, yearBorrowed=0;
+                    while (true) {
+                        try {
+                            System.out.println("Enter the numerical month in which the book was borrowed: ");
+                            monthBorrowed = scanner.nextInt();
 
-                    System.out.println("Enter the numerical day on which the book was borrowed: ");
-                    int dayBorrowed = scanner.nextInt();
+                            System.out.println("Enter the numerical day on which the book was borrowed: ");
+                            dayBorrowed = scanner.nextInt();
 
-                    System.out.println("Enter the numerical year in which the book was borrowed: ");
-                    int yearBorrowed = scanner.nextInt();
+                            System.out.println("Enter the numerical year in which the book was borrowed: ");
+                            yearBorrowed = scanner.nextInt();
 
-                    Date date = new Date(monthBorrowed, dayBorrowed, yearBorrowed);
+                            if ( monthBorrowed < 1 || monthBorrowed > 12 ) {
+                                System.out.println("Bad input for month. Try again.");
+                                continue;
+                            }
+                            if ( dayBorrowed < 1 || dayBorrowed > 31 ) {
+                                System.out.println("Bad input for day. Try again.");
+                                continue;
+                            }
+                            if ( yearBorrowed < 2000 || yearBorrowed > 2021 ) {
+                                System.out.println("Bad input for year. Try again.");
+                                continue;
+                            }
+                            break;
+                        } catch (Exception ex) {
+                            System.out.println("Bad input for date. Try again.");
+                        }
+                    }
+                    Date dateBorrowed = new Date(monthBorrowed, dayBorrowed, yearBorrowed);
+                    dateBorrowed.verifyDate();
 
-                    if (library.loanOutBook(title, borrowerName, date)) {
+                    if (library.loanOutBook(title, borrowerName, dateBorrowed)) {
 
                         System.out.println("This book has been successfully loaned out. ");
 
@@ -112,8 +133,39 @@ public class Main {
                 library.printBorrowedBooks();
 
             } else if (userChoice == 6) {
+                int month, day, year;
+                while (true) {
+                    try {
+                        System.out.println("Enter the numerical month for date: ");
+                        month = scanner.nextInt();
 
+                        System.out.println("Enter the numerical day for date: ");
+                        day = scanner.nextInt();
 
+                        System.out.println("Enter the numerical year for date: ");
+                        year = scanner.nextInt();
+
+                        if ( month < 1 || month > 12 ) {
+                            System.out.println("Bad input for month. Try again.");
+                            continue;
+                        }
+                        if ( day < 1 || day > 31 ) {
+                            System.out.println("Bad input for day. Try again.");
+                            continue;
+                        }
+                        if ( year < 2000 || year > 2021 ) {
+                            System.out.println("Bad input for year. Try again.");
+                            continue;
+                        }
+                        break;
+                    } catch (Exception ex) {
+                        System.out.println("Bad input for date. Try again.");
+                    }
+                }
+                Date fromDate = new Date(month, day, year);
+                fromDate.verifyDate();
+
+                library.printLateBooks(fromDate);
 
             } else if (userChoice == 7) {
 

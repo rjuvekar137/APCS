@@ -30,7 +30,7 @@ public class Library {
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
             if (book.title.toLowerCase().contains(title.toLowerCase())) {
-                System.out.println(book.title);
+                System.out.format("Title: %-30s Author: %s%n", book.title, book.author);
                 found = true;
             }
         }
@@ -124,6 +124,24 @@ public class Library {
         }
         if (!found) {
             System.out.println("There are no books in the library at this time.");
+        }
+    }
+
+    public void printLateBooks (Date fromDate) {
+        boolean found = false;
+
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            if (book.getBorrowerName() != null) {
+                // check if late and print
+                if ( book.getDateBorrowed().daysTo(fromDate) > 14 ) {
+                    System.out.format("Title: %-30s By: %-30s Date: %s%n", book.getTitle(), book.getBorrowerName(), book.getDateBorrowed().toString());
+                    found = true;
+                }
+            }
+        }
+        if (!found) {
+            System.out.println("There are no books that are late at this time.");
         }
     }
 }
