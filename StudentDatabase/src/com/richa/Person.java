@@ -1,12 +1,8 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 2/2/21, Tuesday
- **/
 public class Person {
 
-    String name = null;
+    String name = "";
 
     public Person(String name) {
         this.name = name;
@@ -21,9 +17,7 @@ public class Person {
     }
 
     public void print() {
-
         System.out.println("Name: " + name);
-
     }
 
 }

@@ -1,9 +1,5 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 2/3/21, Wednesday
- **/
 public class Student extends Person {
 
     long studentID = 0;
@@ -27,10 +23,8 @@ public class Student extends Person {
     }
 
     public void print() {
-
         super.print();
         System.out.println("Student ID: " + studentID);
-
     }
 
 }

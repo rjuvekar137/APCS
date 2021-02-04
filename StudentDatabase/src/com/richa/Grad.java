@@ -1,12 +1,8 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 2/3/21, Wednesday
- **/
 public class Grad extends Student{
 
-    String major = null;
+    String major = "";
 
     public Grad(String name, long studentID, String major) {
         super(name, studentID);
@@ -23,10 +19,12 @@ public class Grad extends Student{
     }
 
     public void print() {
-
         super.print();
         System.out.println("Major: " + major);
+    }
 
+    public boolean equals(Grad other) {
+        return this.major.equals(other.getMajor());
     }
 
 }

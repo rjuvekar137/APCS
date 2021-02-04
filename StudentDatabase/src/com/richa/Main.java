@@ -9,6 +9,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //test data
+        people.add(new Undergrad("Test 11", 11, "freshman"));
+        people.add(new Undergrad("Test 12", 12, "senior"));
+        people.add(new Undergrad("Test 13", 13, "sophomore"));
+        people.add(new Undergrad("Test 14", 14, "freshman"));
+        people.add(new Grad("Test 21", 21, "biology"));
+        people.add(new Grad("Test 22", 22, "math"));
+        people.add(new Grad("Test 23", 23, "art"));
+        people.add(new Grad("Test 24", 24, "art"));
+        people.add(new Grad("Test 24", 24, "comp sci"));
+
         while (true) {
 
             System.out.println(" ");
@@ -34,19 +45,17 @@ public class Main {
                 continue;
             }
 
-            if (userChoice == 1) {
+            if (userChoice == 1) { // add a person
 
-                if (people.size() == 10) {
-
+                if (people.size() >= 10) {
                     System.out.println("You have reached the max number of people you can add (10). ");
                     continue;
-
                 }
 
-                System.out.println("Name: ");
+                System.out.print("Name: ");
                 String name = scanner.nextLine();
 
-                System.out.println("Student ID: ");
+                System.out.print("Student ID: ");
                 long studentID;
                 try {
                     studentID = scanner.nextLong();
@@ -56,7 +65,7 @@ public class Main {
                     continue;
                 }
 
-                System.out.println("Undergraduate (1) or graduate (2): ");
+                System.out.print("Undergraduate (1) or graduate (2): ");
                 int studentType;
                 try {
                     studentType = scanner.nextInt();
@@ -68,7 +77,7 @@ public class Main {
 
                 if (studentType == 1) {
 
-                    System.out.println("Grade level (freshman (1), sophomore (2), junior (3), senior (4)): ");
+                    System.out.print("Grade level (freshman (1), sophomore (2), junior (3), senior (4)): ");
                     int gradeLevelChoice;
                     try {
                         gradeLevelChoice = scanner.nextInt();
@@ -79,28 +88,17 @@ public class Main {
                     }
 
                     String gradeLevel = "";
-
                     if (gradeLevelChoice == 1) {
-
                         gradeLevel = "freshman";
-
                     } else if (gradeLevelChoice ==  2) {
-
                         gradeLevel = "sophomore";
-
                     } else if (gradeLevelChoice ==  3) {
-
                         gradeLevel = "junior";
-
                     } else if (gradeLevelChoice == 4) {
-
                         gradeLevel = "senior";
-
                     } else {
-
                         System.out.println("Invalid student grade level. Please input either 1, 2, 3, or 4.");
                         continue;
-
                     }
 
                     Undergrad ug = new Undergrad(name, studentID, gradeLevel);
@@ -108,78 +106,139 @@ public class Main {
 
                 } else if (studentType == 2) {
 
-                    System.out.println("Major: ");
+                    System.out.print("Major: ");
                     String major =  scanner.nextLine();
 
                     Grad g = new Grad(name, studentID, major);
                     people.add(g);
 
                 } else {
-
                     System.out.println("Invalid student type. Please input either 1 or 2. ");
                     continue;
-
                 }
 
-            } else if (userChoice == 2) {
+            } else if (userChoice == 2) { // print all persons
 
+                boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-
                     Person p = people.get(i);
+                    found = true;
                     p.print();
                     System.out.println("");
-
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
                 }
 
-            } else if (userChoice == 3) {
+            } else if (userChoice == 3) { // print all students
 
+                boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-
                     Student s = (Student)people.get(i);
+                    found = true;
                     s.print();
                     System.out.println("");
-
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
                 }
 
-            } else if (userChoice == 4) {
+            } else if (userChoice == 4) { // print all undergraduates
 
+                boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-
                     Student s = (Student)people.get(i);
-
                     if (s.getStudentType() == 1) {
-
+                        found = true;
                         s.print();
                         System.out.println("");
-
                     }
-
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
                 }
 
-            } else if (userChoice == 5) {
+            } else if (userChoice == 5) { // print all graduates
 
+                boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-
                     Student s = (Student)people.get(i);
-
                     if (s.getStudentType() == 2) {
-
+                        found = true;
                         s.print();
                         System.out.println("");
-
                     }
-
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
                 }
 
-            } else if (userChoice == 6) {
+            } else if (userChoice == 6) { // search by grade level
 
+                System.out.print("Input the grade level you want to compare (freshman (1), sophomore (2), junior (3), senior (4)): ");
+                int gradeLevelChoice;
+                try {
+                    gradeLevelChoice = scanner.nextInt();
+                    scanner.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Invalid student grade level. Please input 1, 2, 3, or 4. ");
+                    continue;
+                }
 
+                String gradeLevel = "";
+                if (gradeLevelChoice == 1) {
+                    gradeLevel = "freshman";
+                } else if (gradeLevelChoice ==  2) {
+                    gradeLevel = "sophomore";
+                } else if (gradeLevelChoice ==  3) {
+                    gradeLevel = "junior";
+                } else if (gradeLevelChoice == 4) {
+                    gradeLevel = "senior";
+                } else {
+                    System.out.println("Invalid student grade level. Please input either 1, 2, 3, or 4.");
+                    continue;
+                }
 
-            } else if (userChoice == 7) {
+                Undergrad fakeUG = new Undergrad("", 0, gradeLevel);
+                boolean found = false;
+                for (int i = 0; i < people.size(); i++) {
+                    Student s = (Student)people.get(i);
+                    if (s.getStudentType() == 1) {
+                        Undergrad ug = (Undergrad)s;
+                        if (ug.equals(fakeUG)) {
+                            found = true;
+                            s.print();
+                            System.out.println("");
+                        }
+                    }
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
+                }
 
+            } else if (userChoice == 7) { // search by major
 
+                System.out.print("Major: ");
+                String major =  scanner.nextLine();
 
-            } else if (userChoice == 8) {
+                Grad fakeG = new Grad("", 0, major);
+                boolean found = false;
+                for (int i = 0; i < people.size(); i++) {
+                    Student s = (Student) people.get(i);
+                    if (s.getStudentType() == 2) {
+                        Grad g = (Grad) s;
+                        if (g.equals(fakeG)) {
+                            found = true;
+                            s.print();
+                            System.out.println("");
+                        }
+                    }
+                }
+                if (!found) {
+                    System.out.println("There are no matches to your search. ");
+                }
+
+            } else if (userChoice == 8) { // exit the program
 
                 System.out.println("");
                 System.out.println("Program is ending.");
