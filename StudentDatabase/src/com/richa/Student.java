@@ -3,10 +3,10 @@ package com.richa;
 public class Student extends Person {
 
     long studentID = 0;
-    int studentType = 0;        //1 is undergrad, 2 is grad
 
     public Student(String name, long studentID) {
         super(name);
+        personType = 1;
         this.studentID = studentID;
     }
 
@@ -16,10 +16,6 @@ public class Student extends Person {
 
     public void setStudentID(long studentID) {
         this.studentID = studentID;
-    }
-
-    public int getStudentType() {
-        return studentType;
     }
 
     public void print() {

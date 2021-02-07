@@ -6,7 +6,7 @@ public class Grad extends Student{
 
     public Grad(String name, long studentID, String major) {
         super(name, studentID);
-        super.studentType = 2;
+        personType = 3;
         this.major = major;
     }
 

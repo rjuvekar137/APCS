@@ -6,7 +6,7 @@ public class Undergrad extends Student {
 
     public Undergrad(String name, long studentID, String gradeLevel) {
         super(name, studentID);
-        super.studentType = 1;
+        personType = 2;
         this.gradeLevel = gradeLevel;
     }
 

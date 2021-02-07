@@ -10,15 +10,15 @@ public class Main {
     public static void main(String[] args) {
 
         //test data
+        people.add(new Person("Test 1"));
+        people.add(new Student("Test 2", 2));
+        people.add(new Student("Test 3", 3));
         people.add(new Undergrad("Test 11", 11, "freshman"));
         people.add(new Undergrad("Test 12", 12, "senior"));
-        people.add(new Undergrad("Test 13", 13, "sophomore"));
         people.add(new Undergrad("Test 14", 14, "freshman"));
         people.add(new Grad("Test 21", 21, "biology"));
-        people.add(new Grad("Test 22", 22, "math"));
         people.add(new Grad("Test 23", 23, "art"));
         people.add(new Grad("Test 24", 24, "art"));
-        people.add(new Grad("Test 24", 24, "comp sci"));
 
         while (true) {
 
@@ -52,30 +52,50 @@ public class Main {
                     continue;
                 }
 
+                System.out.println(" ");
+                System.out.println("What type of person information would you like to input? (person (1), student (2), undergrad (3), grad (4)) ");
+                int personChoice;
+                try {
+                    personChoice = scanner.nextInt();
+                    scanner.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Invalid person type. Please input 1, 2, 3, or 4. ");
+                    continue;
+                }
+
+                if (personChoice < 1 || personChoice > 4) {
+                    System.out.println("Invalid person type. Please input 1, 2, 3, or 4. ");
+                    continue;
+                }
+
                 System.out.print("Name: ");
                 String name = scanner.nextLine();
 
-                System.out.print("Student ID: ");
-                long studentID;
-                try {
-                    studentID = scanner.nextLong();
-                    scanner.nextLine();
-                } catch (Exception e) {
-                    System.out.println("Invalid student ID. Please input a number. ");
+                if (personChoice ==  1) {
+                    Person p = new Person(name);
+                    people.add(p);
                     continue;
                 }
 
-                System.out.print("Undergraduate (1) or graduate (2): ");
-                int studentType;
-                try {
-                    studentType = scanner.nextInt();
-                    scanner.nextLine();
-                } catch (Exception e) {
-                    System.out.println("Invalid student type. Please input 1 or 2. ");
-                    continue;
+                long studentID = 0;
+                if (personChoice == 2 || personChoice == 3 || personChoice == 4) {
+                    System.out.print("Student ID: ");
+                    try {
+                        studentID = scanner.nextLong();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Invalid student ID. Please input a number. ");
+                        continue;
+                    }
+
+                    if (personChoice == 2) {
+                        Student s =  new Student(name, studentID);
+                        people.add(s);
+                        continue;
+                    }
                 }
 
-                if (studentType == 1) {
+                if (personChoice == 3) {
 
                     System.out.print("Grade level (freshman (1), sophomore (2), junior (3), senior (4)): ");
                     int gradeLevelChoice;
@@ -90,9 +110,9 @@ public class Main {
                     String gradeLevel = "";
                     if (gradeLevelChoice == 1) {
                         gradeLevel = "freshman";
-                    } else if (gradeLevelChoice ==  2) {
+                    } else if (gradeLevelChoice == 2) {
                         gradeLevel = "sophomore";
-                    } else if (gradeLevelChoice ==  3) {
+                    } else if (gradeLevelChoice == 3) {
                         gradeLevel = "junior";
                     } else if (gradeLevelChoice == 4) {
                         gradeLevel = "senior";
@@ -104,17 +124,14 @@ public class Main {
                     Undergrad ug = new Undergrad(name, studentID, gradeLevel);
                     people.add(ug);
 
-                } else if (studentType == 2) {
+                } else if (personChoice == 4) {
 
                     System.out.print("Major: ");
-                    String major =  scanner.nextLine();
+                    String major = scanner.nextLine();
 
                     Grad g = new Grad(name, studentID, major);
                     people.add(g);
 
-                } else {
-                    System.out.println("Invalid student type. Please input either 1 or 2. ");
-                    continue;
                 }
 
             } else if (userChoice == 2) { // print all persons
@@ -122,9 +139,11 @@ public class Main {
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
                     Person p = people.get(i);
-                    found = true;
-                    p.print();
-                    System.out.println("");
+                    if( p.getPersonType() == 0 ) {
+                        found = true;
+                        p.print();
+                        System.out.println("");
+                    }
                 }
                 if (!found) {
                     System.out.println("There are no matches to your search. ");
@@ -134,10 +153,12 @@ public class Main {
 
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-                    Student s = (Student)people.get(i);
-                    found = true;
-                    s.print();
-                    System.out.println("");
+                    Person p = people.get(i);
+                    if( p.getPersonType() == 1 ) {
+                        found = true;
+                        p.print();
+                        System.out.println("");
+                    }
                 }
                 if (!found) {
                     System.out.println("There are no matches to your search. ");
@@ -147,10 +168,10 @@ public class Main {
 
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-                    Student s = (Student)people.get(i);
-                    if (s.getStudentType() == 1) {
+                    Person p = people.get(i);
+                    if( p.getPersonType() == 2 ) {
                         found = true;
-                        s.print();
+                        p.print();
                         System.out.println("");
                     }
                 }
@@ -162,10 +183,10 @@ public class Main {
 
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-                    Student s = (Student)people.get(i);
-                    if (s.getStudentType() == 2) {
+                    Person p = people.get(i);
+                    if( p.getPersonType() == 3 ) {
                         found = true;
-                        s.print();
+                        p.print();
                         System.out.println("");
                     }
                 }
@@ -202,12 +223,12 @@ public class Main {
                 Undergrad fakeUG = new Undergrad("", 0, gradeLevel);
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-                    Student s = (Student)people.get(i);
-                    if (s.getStudentType() == 1) {
-                        Undergrad ug = (Undergrad)s;
+                    Person p = people.get(i);
+                    if (p.getPersonType() == 2) {
+                        Undergrad ug = (Undergrad)p;
                         if (ug.equals(fakeUG)) {
                             found = true;
-                            s.print();
+                            p.print();
                             System.out.println("");
                         }
                     }
@@ -224,12 +245,12 @@ public class Main {
                 Grad fakeG = new Grad("", 0, major);
                 boolean found = false;
                 for (int i = 0; i < people.size(); i++) {
-                    Student s = (Student) people.get(i);
-                    if (s.getStudentType() == 2) {
-                        Grad g = (Grad) s;
+                    Person p = people.get(i);
+                    if (p.getPersonType() == 3) {
+                        Grad g = (Grad) p;
                         if (g.equals(fakeG)) {
                             found = true;
-                            s.print();
+                            p.print();
                             System.out.println("");
                         }
                     }
