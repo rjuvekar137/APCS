@@ -1,9 +1,5 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 2/25/21, Thursday
- **/
 class IntegerTest {
 
     Number n1 = new Integer(5);

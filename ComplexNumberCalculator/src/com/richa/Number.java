@@ -1,9 +1,5 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 2/21/21, Sunday
- **/
 public interface Number {
 
     public Number add(Number num);

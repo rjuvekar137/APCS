@@ -2,10 +2,6 @@ package com.richa;
 
 import com.sun.jdi.InvalidTypeException;
 
-/**
- * @author : rjuvekar
- * @created : 2/21/21, Sunday
- **/
 public class Integer implements Number {
 
     int number = 0;

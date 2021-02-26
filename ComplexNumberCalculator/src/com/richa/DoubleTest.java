@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @author : rjuvekar
- * @created : 2/25/21, Thursday
- **/
 class DoubleTest {
 
     Number n1 = new Double(5);
