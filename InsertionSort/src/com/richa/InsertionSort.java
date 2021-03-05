@@ -13,7 +13,7 @@ public class InsertionSort{
     //constructor
     public InsertionSort(int[] arr)
     {
-        unsorted = arr;
+        unsorted = arr; // store the array
     }
 
     //Sort array from smallest to largest using insertion sort
@@ -28,13 +28,13 @@ public class InsertionSort{
             for (int i = 1; i < unsorted.length; i++) {
                 sorted[i] = unsorted[i];
                 for (int j = 0; j < i; j++) {
-                    if ( unsorted[i] < sorted[j] ) { // insert here
-                        // move by 1
+                    if ( unsorted[i] < sorted[j] ) { // insert at j
+                        // move by 1 to create an open spot
                         for (int k = i-1; k >= j; k-- ) {
                             sorted[k+1] = sorted[k];
                         }
-                        sorted[j] = unsorted[i];
-                        break; // insert done
+                        sorted[j] = unsorted[i]; // insert
+                        break; // done inserting so break out of loop
                     }
                 }
             }

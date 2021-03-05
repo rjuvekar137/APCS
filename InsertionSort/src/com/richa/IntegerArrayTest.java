@@ -14,11 +14,15 @@ class IntegerArrayTest {
     void printStats() {
 
         IntegerArray integerArray = new IntegerArray();
-        integerArray.add(1);
         integerArray.add(3);
-        integerArray.add(1);
+        integerArray.add(6);
+        integerArray.add(-2);
+        integerArray.add(6);
+        integerArray.add(-1);
         integerArray.add(3);
-        integerArray.add(2);
+        integerArray.add(-1);
+        integerArray.add(3);
+        integerArray.printAll();
         integerArray.printStats();
     }
 }
