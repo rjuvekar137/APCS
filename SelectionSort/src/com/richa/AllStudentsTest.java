@@ -4,10 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @author : rjuvekar
- * @created : 3/7/21, Sunday
- **/
 class AllStudentsTest {
 
     AllStudents students = new AllStudents();

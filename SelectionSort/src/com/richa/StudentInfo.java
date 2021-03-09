@@ -1,9 +1,5 @@
 package com.richa;
 
-/**
- * @author : rjuvekar
- * @created : 3/7/21, Sunday
- **/
 public class StudentInfo {
 
     private String name = null;
