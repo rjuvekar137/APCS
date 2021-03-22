@@ -14,8 +14,8 @@ public class Main {
             System.out.println(" ");
             System.out.println("Please select an option: ");
             System.out.println("1) Input a new students information. ");
-            System.out.println("2) Output current students information in ascending order by name. ");
-            System.out.println("3) Output current students information in descending order by final average. ");
+            System.out.println("2) Output student information in ascending order by name. ");
+            System.out.println("3) Output student information in descending order by final average. ");
             System.out.println("4) Output the quarterly average statistics for the class. ");
             System.out.println("5) Quit the program. ");
             System.out.print("Choice: ");
