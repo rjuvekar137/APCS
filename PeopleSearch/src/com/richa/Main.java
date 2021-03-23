@@ -54,7 +54,85 @@ public class Main {
 
             } else if (userChoice == 2) {
 
-                // TODO
+                System.out.print("Enter the name of person to find: ");
+                String name = scanner.nextLine();
+
+                System.out.println("Which kind of search do you want?");
+                System.out.println("1) Sequential search");
+                System.out.println("2) Binary search");
+                System.out.print("Choice: ");
+
+                int searchChoice = 0;
+                try {
+                    searchChoice = scanner.nextInt();
+                    scanner.nextLine();
+                } catch(Exception e) {
+                    System.out.println("Bad input. Please enter either 1 or 2.");
+                    continue;
+                }
+
+                Person person = null;
+                if ( searchChoice == 1 ) {
+                    person = people.sequentialSearch(name);
+                } else if ( searchChoice == 2 ) {
+                    person = people.binarySearch(name);
+                } else {
+                    System.out.println("Bad input. Please enter either 1 or 2.");
+                    continue;
+                }
+
+                // person found so allow user to edit or delete
+                if ( person != null ) {
+
+                    System.out.println("What do you want do with this person?");
+                    System.out.println("1) Modify");
+                    System.out.println("2) Delete");
+                    System.out.print("Choice: ");
+
+                    int editChoice = 0;
+                    try {
+                        editChoice = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch(Exception e) {
+                        System.out.println("Bad input. Please enter either 1 or 2.");
+                        continue;
+                    }
+
+                    if ( editChoice == 1 ) {
+
+                        String newName = null;
+                        int newAge = 0;
+
+                        try {
+
+                            System.out.print("Enter the person's new name: ");
+                            newName = scanner.nextLine();
+
+                            System.out.print("Enter the person's new age: ");
+                            newAge = scanner.nextInt();
+                            scanner.nextLine();
+
+                        } catch(Exception e) {
+                            System.out.println("Bad input. Please enter an appropriate response to the prompts.");
+                            continue;
+                        }
+
+                        if ( people.modify(name, newName, newAge) ) {
+                            System.out.println("Person modify success.");
+                        } else {
+                            System.out.println("Person modify failed.");
+                        }
+                    } else if ( editChoice == 2 ) {
+                        if ( people.delete(name) ) {
+                            System.out.println("Person delete success.");
+                        } else {
+                            System.out.println("Person delete failed.");
+                        }
+                    } else {
+                        System.out.println("Bad input. Please enter either 1 or 2.");
+                        continue;
+                    }
+                }
 
             } else if (userChoice == 3) {
 
