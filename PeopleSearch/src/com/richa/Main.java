@@ -29,7 +29,7 @@ public class Main {
                 continue;
             }
 
-            if (userChoice == 1) { // Input a number
+            if (userChoice == 1) { // Input a new person's information
 
                 String name = null;
                 int age = 0;
@@ -52,7 +52,7 @@ public class Main {
 
                 people.addPerson(name, age);
 
-            } else if (userChoice == 2) {
+            } else if (userChoice == 2) { // Search for person by name
 
                 System.out.print("Enter the name of person to find: ");
                 String name = scanner.nextLine();
@@ -134,7 +134,7 @@ public class Main {
                     }
                 }
 
-            } else if (userChoice == 3) {
+            } else if (userChoice == 3) { // Print names of all people in alphabetical order.
 
                 people.printAllPeopleByName();
 
