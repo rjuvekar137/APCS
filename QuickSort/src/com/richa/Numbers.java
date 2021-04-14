@@ -26,7 +26,7 @@ public class Numbers {
 
     void printArray(int[] arr) {
         if ( arr == null ) {
-            System.out.println("Nothing to show");
+            System.out.println("Nothing to show. Please enter some numbers.");
             return;
         }
         for(int i = 0; i < arr.length; i++)
@@ -45,35 +45,14 @@ public class Numbers {
         return numCopy;
     }
 
-    public void printQuickSortedFirst() {
-        QuickSort qs = new QuickSort(1);
+    public void printQuickSorted() {
         int[] numCopy = getNumbersCopy();
+        if (numCopy ==  null) {
+            System.out.println("Nothing to show. Please enter some numbers.");
+            return;
+        }
         printArray(numCopy);
-        qs.sort(numCopy, 0, numCopy.length-1);
-        printArray(numCopy);
-    }
-
-    public void printQuickSortedMedian() {
-        QuickSort qs = new QuickSort(2);
-        int[] numCopy = getNumbersCopy();
-        printArray(numCopy);
-        qs.sort(numCopy, 0, numCopy.length-1);
-        printArray(numCopy);
-    }
-
-    public void printQuickSortedRandom() {
-        QuickSort qs = new QuickSort(2);
-        int[] numCopy = getNumbersCopy();
-        printArray(numCopy);
-        qs.sort(numCopy, 0, numCopy.length-1);
-        printArray(numCopy);
-    }
-
-    public void printQuickSortedLast() {
-        QuickSort qs = new QuickSort(3);
-        int[] numCopy = getNumbersCopy();
-        printArray(numCopy);
-        qs.sort(numCopy, 0, numCopy.length-1);
+        QuickSort.sort(numCopy, 0, numCopy.length-1);
         printArray(numCopy);
     }
 }
